@@ -1,0 +1,18 @@
+---
+- name: Cloning emacs config from 
+  git:
+    repo: 'https://github.com/xyloon/emacs_config.git'
+    dest: ~/github/emacs_config
+    clone: yes
+    update: yes
+
+- name: Making simbolic link for emacs
+  file:
+    src: '~/github/emacs_config/.emacs.d'
+    dest: '~/.emacs.d'
+    state: link
+
+- name: Installing emacs
+  homebrew_cask:
+    name: emacs
+    state: present

@@ -6,5 +6,5 @@
   with_items:
     - {name: "user.name",  value: "{{ git_user }}" }
     - {name: "user.email", value: "{{ git_email }}" }
-    - {name: "ui.color",   value: "True" }
+    - {name: "ui.color",   value: True }
     - {name: "core.editor", value: "emacs" }

@@ -16,3 +16,22 @@
   homebrew_cask:
     name: emacs
     state: present
+
+- name: Making alias for emacs shell
+  blockinfile:
+    path: "{{ ansible_facts.user_dir }}/{{ item }}"
+    state: present
+    # insertafter is skiped
+    marker: "##### {mark} emacs alias #####"
+    content: |
+      alias emacs='emacs -nw'
+  with_items:
+    #- .bashrc
+    #- .profile
+    - .bash_profile
+
+- name: Installing python related packages
+  pip:
+    requirements: ~/github/emacs_config/python_debug.txt
+    executable: pip3
+

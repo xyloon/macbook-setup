@@ -1,0 +1,32 @@
+- name: pyenv check
+  stat:
+    path: "{{ansible_facts.user_dir}}/.pyenv/bin/pyenv"
+  register: pyenv_file_existence
+- name: pyenv check
+  stat:
+    path: "{{ansible_facts.user_dir}}/.pyenv"
+  register: pyenv_dir_existence
+- name: pyenv remove when incomplete installation
+  file:
+    path: "{{ansible_facts.user_dir}}/.pyenv"
+    state: absent
+  when: pyenv_dir_existence.stat.exists and not pyenv_file_existence.stat.exists
+- name: Installing pyenv
+  shell: curl https://pyenv.run | sh
+  when: not pyenv_file_existence.stat.exists
+- name: Applying pyenv configuration to shell(bash)
+  blockinfile:
+    path: "{{ ansible_facts.user_dir }}/{{ item }}"
+    state: present
+    # insertafter is skiped
+    marker: "##### {mark} pyenv environment #####"
+    content: |
+      export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+  with_items:
+    #- .bashrc
+    #- .profile
+    - .bash_profile
+

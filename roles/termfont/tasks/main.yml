@@ -1,0 +1,5 @@
+---
+- name: install d2 coding font (Mac)
+  homebrew_cask:
+    name: caskroom/fonts/font-d2coding
+    state: present

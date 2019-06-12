@@ -24,7 +24,7 @@
     # insertafter is skiped
     marker: "##### {mark} emacs alias #####"
     content: |
-      alias emacs='emacs -nw'
+      alias emacs='/usr/local/bin/emacs -nw'
   with_items:
     #- .bashrc
     #- .profile

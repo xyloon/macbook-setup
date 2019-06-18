@@ -6,7 +6,7 @@
   with_items:
     - {name: "user.name",  value: "{{ git_user }}" }
     - {name: "user.email", value: "{{ git_email }}" }
-    - {name: "core.precomposeunicode", value: True}
-    - {name: "core.quotepath", value: False}
-    - {name: "ui.color",   value: True }
+    - {name: "core.precomposeunicode", value: 'true'}
+    - {name: "core.quotepath", value: 'false'}
+    - {name: "ui.color",   value: 'true' }
     - {name: "core.editor", value: "emacs" }

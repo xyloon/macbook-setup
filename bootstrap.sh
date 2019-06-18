@@ -35,6 +35,6 @@ fi
 
 # Modify the PATH
 # This should be subsequently updated in shell settings
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
 # ansible-playbook local.yml -K

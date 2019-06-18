@@ -1,5 +1,5 @@
 ---
-- name: Cloning emacs config from 
+- name: Cloning emacs config from github 
   git:
     repo: 'https://github.com/xyloon/emacs_config.git'
     dest: ~/github/emacs_config
